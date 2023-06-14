@@ -10,9 +10,6 @@ easyWords = ["must","lord","limp","duke","rage","name","raft","mute","tide","slu
 mediumWords = ["racing","losing","accuse","fabric","squawk","uphold","slider","amidst","manage","thrust"]
 hardWords = ["offended","oblivion","digested","drumbeat","discrete","hindered","meditate","haystack","draining","mourning"]
 
-#array for storing previous guesses
-previousGuesses = []
-
 #welcoming the user
 name = input("What is your name? ")
 
@@ -81,31 +78,34 @@ while turns > 0:
         break            
 
     #if user has input guesses, print them out
-    if len(previousGuesses) > 0:
-        print("\nPrevious guesses: ", *previousGuesses)
+    if len(guesses) > 0:
+        print("\nPrevious guesses: ", *guesses)
 
     # ask the user go guess a character
     guess = input("guess a character:") 
-    previousGuesses.append(guess)
 
-    # set the players guess to guesses
-    guesses += guess                    
+    # checks to see if the guess has already been guessed
+    if guess not in guesses:
+        # set the players guess to guesses
+        guesses += guess                    
 
-    # if the guess is not found in the secret word
-    if guess not in word:  
+        # if the guess is not found in the secret word
+        if guess not in word:  
  
-     # turns counter decreases with 1 (now 9)
-        turns -= 1        
+        # turns counter decreases with 1 (now 9)
+            turns -= 1        
  
-    # print wrong
-        print ("Wrong")  
+        # print wrong
+            print ("\nWrong")  
  
-    # how many turns are left
-        print ("You have", + turns, 'more guesses' )
+        # how many turns are left
+            print ("You have", + turns, 'more guesses' )
  
-    # if the turns are equal to zero
-        if turns == 0:           
+        # if the turns are equal to zero
+            if turns == 0:           
     
-        # print "You Lose"
-            print ("You Lose"  )
-            print ("The word was " + word)
+            # print "You Lose"
+                print ("You Lose"  )
+                print ("The word was " + word)
+    else:
+        print("\nYou already guessed that letter.", "\nGuess again.")
