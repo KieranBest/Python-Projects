@@ -9,21 +9,20 @@ hardWords = ["offended","oblivion","digested","drumbeat","discrete","hindered","
 
 global usedWords
 usedWords = []
-easyValue = [0]
-mediumValue = [0]
-hardValue = [0]
 
 #determines the difficulty along with the word
 def difficulty():
     global word 
-    
+    easyValue = 0
+    mediumValue = 0
+    hardValue = 0
     while True:
         difficulty = input("What difficulty would you like to play? (easy, medium, hard) ")
         if difficulty == "easy":
             word = easyWords[easyValue]
             for words in usedWords:
                 if word == words:
-                    easyValue = easyValue+1
+                    easyValue+=1
                     word = easyWords[easyValue]
                     if easyValue == 9:
                         print("You have already played all of the easy words.", "\nYou have been moved to the next level.")
