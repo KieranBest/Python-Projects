@@ -5,21 +5,36 @@
 import time
 import random
 
+#difficulty levels
+easyWords = ["must","lord","limp","duke","rage","name","raft","mute","tide","slug"]
+mediumWords = ["racing","losing","accuse","fabric","squawk","uphold","slider","amidst","manage","thrust"]
+hardWords = ["offended","oblivion","digested","drumbeat","discrete","hindered","meditate","haystack","draining","mourning"]
+
 #welcoming the user
 name = input("What is your name? ")
 
-print ("Hello, " + name, "Time to play hangman!")
+print ("Hello, " + name)
 
 #wait for 1 second
 time.sleep(1)
 
+difficulty = input("What difficulty would you like to play? (easy, medium, hard) ")
+if difficulty == "easy":
+    word = easyWords[random.randint(0,9)]
+elif difficulty == "medium":
+    word = mediumWords[random.randint(0,9)]
+elif difficulty == "hard":
+    word = hardWords[random.randint(0,9)]
+
+print ("You have chosen " + difficulty + " difficulty.")
+
+#wait for 1 second
+time.sleep(1)
+
+print("Time to play hangman!")
+
 print ("Start guessing...")
 time.sleep(0.5)
-
-#here we set the secret. 
-wordList = ["must","lord","limp","duke","rage","name","raft","mute","tide","slug"]
-
-word = wordList[random.randint(0,9)]
 
 #creates an variable with an empty value
 guesses = ''
@@ -82,3 +97,4 @@ while turns > 0:
     
         # print "You Lose"
             print ("You Lose"  )
+            print ("The word was " + word)
