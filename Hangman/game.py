@@ -7,29 +7,60 @@ easyWords = ["must","lord","limp","duke","rage","name","raft","mute","tide","slu
 mediumWords = ["racing","losing","accuse","fabric","squawk","uphold","slider","amidst","manage","thrust"]
 hardWords = ["offended","oblivion","digested","drumbeat","discrete","hindered","meditate","haystack","draining","mourning"]
 
+global usedWords
+usedWords = []
+easyValue = [0]
+mediumValue = [0]
+hardValue = [0]
+
 #determines the difficulty along with the word
 def difficulty():
     global word 
+    
     while True:
         difficulty = input("What difficulty would you like to play? (easy, medium, hard) ")
         if difficulty == "easy":
-            word = easyWords[random.randint(0,9)]
+            word = easyWords[easyValue]
+            for words in usedWords:
+                if word == words:
+                    easyValue = easyValue+1
+                    word = easyWords[easyValue]
+                    if easyValue == 9:
+                        print("You have already played all of the easy words.", "\nYou have been moved to the next level.")
+                        word = mediumWords[mediumValue]
+                        difficulty = "medium"
             print ("You have chosen " + difficulty + " difficulty.")
             break
         elif difficulty == "medium":
-            word = mediumWords[random.randint(0,9)]
+            word = mediumWords[mediumValue]
+            for words in usedWords:
+                if word == words:
+                    mediumValue = mediumValue+1
+                    word = mediumWords[mediumValue]
+                    if mediumValue == 9:
+                        print("You have already played all of the medium words.", "\nYou have been moved to the next level.")
+                        word = hardWords[hardValue]
+                        difficulty = "hard"
             print ("You have chosen " + difficulty + " difficulty.")
             break
         elif difficulty == "hard":
-            word = hardWords[random.randint(0,9)]
+            word = hardWords[hardValue]
+            for words in usedWords:
+                if word == words:
+                    hardValue = hardValue+1
+                    word = hardWords[hardValue]
+                    if hardValue == 9:
+                        print("You have already played all of the hard words.", "\nYou have completed the game.")
+                        break
             print ("You have chosen " + difficulty + " difficulty.")
             break
         else:
             print("Please enter a valid input.")
+
 #creates function to start playing
 def playGame():
     difficulty()
-
+    usedWords.append(word)
     #wait for 1 second
     time.sleep(1)
 
