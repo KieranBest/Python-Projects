@@ -71,9 +71,6 @@ while turns > 0:
         # and increase the failed counter with one
             failed += 1    
 
-    #if user has input guesses, print them out
-    if len(previousGuesses) > 0:
-        print("\nPrevious guesses: ", *previousGuesses)
 
     # if failed is equal to zero
 
@@ -82,6 +79,11 @@ while turns > 0:
         print ("\nYou won")
     # exit the script
         break            
+
+    #if user has input guesses, print them out
+    if len(previousGuesses) > 0:
+        print("\nPrevious guesses: ", *previousGuesses)
+
     # ask the user go guess a character
     guess = input("guess a character:") 
     previousGuesses.append(guess)
