@@ -7,18 +7,28 @@ easyWords = ["must","lord","limp","duke","rage","name","raft","mute","tide","slu
 mediumWords = ["racing","losing","accuse","fabric","squawk","uphold","slider","amidst","manage","thrust"]
 hardWords = ["offended","oblivion","digested","drumbeat","discrete","hindered","meditate","haystack","draining","mourning"]
 
+#determines the difficulty along with the word
+def difficulty():
+    global word 
+    while True:
+        difficulty = input("What difficulty would you like to play? (easy, medium, hard) ")
+        if difficulty == "easy":
+            word = easyWords[random.randint(0,9)]
+            print ("You have chosen " + difficulty + " difficulty.")
+            break
+        elif difficulty == "medium":
+            word = mediumWords[random.randint(0,9)]
+            print ("You have chosen " + difficulty + " difficulty.")
+            break
+        elif difficulty == "hard":
+            word = hardWords[random.randint(0,9)]
+            print ("You have chosen " + difficulty + " difficulty.")
+            break
+        else:
+            print("Please enter a valid input.")
 #creates function to start playing
 def playGame():
-    #determines the difficulty along with the word
-    difficulty = input("What difficulty would you like to play? (easy, medium, hard) ")
-    if difficulty == "easy":
-        word = easyWords[random.randint(0,9)]
-    elif difficulty == "medium":
-        word = mediumWords[random.randint(0,9)]
-    elif difficulty == "hard":
-        word = hardWords[random.randint(0,9)]
-
-    print ("You have chosen " + difficulty + " difficulty.")
+    difficulty()
 
     #wait for 1 second
     time.sleep(1)
@@ -102,7 +112,7 @@ def playGame():
             print("\nYou already guessed that letter.", "\nGuess again.")
 
 #ask the user if they want to play again
-def playAgain():
+def playAgainFunct():
     playAgain = input("Would you like to play again? (y/n) ")
     if playAgain == "y":
         playGame()
@@ -112,4 +122,4 @@ def playAgain():
         exit()
     else:
         print("Please enter a valid input.")
-        playAgain()
+        playAgainFunct()

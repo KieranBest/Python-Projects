@@ -3,7 +3,7 @@
 
 #import required modules
 from game import playGame
-from game import playAgain
+from game import playAgainFunct
 import time
 
 #welcoming the user
@@ -19,4 +19,5 @@ playGame()
 #wait for 1 second
 time.sleep(1)
 
-playAgain()
+while True:
+    playAgainFunct()
