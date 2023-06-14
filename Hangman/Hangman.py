@@ -1,5 +1,9 @@
+#Starting code came from 
+#https://www.pythonforbeginners.com/code-snippets-source-code/game-hangman
+
 #importing the time module
 import time
+import random
 
 #welcoming the user
 name = input("What is your name? ")
@@ -12,8 +16,10 @@ time.sleep(1)
 print ("Start guessing...")
 time.sleep(0.5)
 
-#here we set the secret. You can select any word to play with. 
-word = ("secret")
+#here we set the secret. 
+wordList = ["must","lord","limp","duke","rage","name","raft","mute","tide","slug"]
+
+word = wordList[random.randint(0,9)]
 
 #creates an variable with an empty value
 guesses = ''
@@ -50,11 +56,11 @@ while turns > 0:
 
     # print You Won
     if failed == 0:        
-        print ("You won")
+        print ("\nYou won")
     # exit the script
         break            
     # ask the user go guess a character
-    guess = input("guess a character:") 
+    guess = input("\nguess a character:") 
 
     # set the players guess to guesses
     guesses += guess                    
