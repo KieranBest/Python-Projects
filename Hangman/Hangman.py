@@ -10,6 +10,9 @@ easyWords = ["must","lord","limp","duke","rage","name","raft","mute","tide","slu
 mediumWords = ["racing","losing","accuse","fabric","squawk","uphold","slider","amidst","manage","thrust"]
 hardWords = ["offended","oblivion","digested","drumbeat","discrete","hindered","meditate","haystack","draining","mourning"]
 
+#array for storing previous guesses
+previousGuesses = []
+
 #welcoming the user
 name = input("What is your name? ")
 
@@ -18,6 +21,7 @@ print ("Hello, " + name)
 #wait for 1 second
 time.sleep(1)
 
+#determines the difficulty along with the word
 difficulty = input("What difficulty would you like to play? (easy, medium, hard) ")
 if difficulty == "easy":
     word = easyWords[random.randint(0,9)]
@@ -67,6 +71,10 @@ while turns > 0:
         # and increase the failed counter with one
             failed += 1    
 
+    #if user has input guesses, print them out
+    if len(previousGuesses) > 0:
+        print("\nPrevious guesses: ", *previousGuesses)
+
     # if failed is equal to zero
 
     # print You Won
@@ -75,7 +83,8 @@ while turns > 0:
     # exit the script
         break            
     # ask the user go guess a character
-    guess = input("\nguess a character:") 
+    guess = input("guess a character:") 
+    previousGuesses.append(guess)
 
     # set the players guess to guesses
     guesses += guess                    
